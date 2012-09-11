@@ -105,6 +105,12 @@ These are the backtick color codes based on how the [Legend of the Red Dragon](h
  * <span style="background-color: black; color: rgb(85,255,255)">`$ : Bright Cyan</span>
  * <span style="background-color: black; color: rgb(255,255,255)">`% : Bright White</span>
 
+### Mac Defaults:
+Note the lack of dark grey.  This is an issue with the default colors on the mac
+terminal. (taken from iTerm - terminal.app is even worse)
+
+![Mac Color Options](color-test-mac.png)
+
 ## <a name="status"></a>Current status
 This module is in a development stage. It's probably broken horribly in places - not sure.
 
