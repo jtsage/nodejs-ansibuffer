@@ -111,6 +111,11 @@ terminal. (taken from iTerm - terminal.app is even worse)
 
 ![Mac Color Options](https://raw.github.com/jtsage/nodejs-ansibuffer/master/screens/color-test-mac.png)
 
+### Linux Defaults:
+Taken in terminator.  gnome-terminal is comparable
+
+![Linux Color Options](https://raw.github.com/jtsage/nodejs-ansibuffer/master/screens/color-test-linux.png)
+
 ## <a name="status"></a>Current status
 This module is in a development stage. It's probably broken horribly in places - not sure.
 
