@@ -1,10 +1,10 @@
 {
   "name": "nodejs-ansibuffer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Escape code aware (ANSI), chunked, input/output buffer",
   "main": "ansibuffer.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node ./tests/test.js"
   },
   "repository": {
     "type": "git",

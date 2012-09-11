@@ -31,14 +31,14 @@ TOC
 			function() { 
 				var tmp = outputBuffer.bite();
 				if ( tmp !== false ) { c.write(tmp); } 
-			}, 5);
+			}, 15);
 			
 		// Set character mode (client side - do not wait for CR-LF)
 		c.write(String.fromCharCode(255) + String.fromCharCode(253) + String.fromCharCode(34),'ascii');
 		// No local (client-side) echo
 		c.write(String.fromCharCode(255) + String.fromCharCode(251) + String.fromCharCode(1),'ascii');
   
-		outpurBuffer.queue(" `9W`1welcome `9T`1o `9ANSIB`1uffer `2!!");
+		outputBuffer.queue(" `9W`1elcome `9T`1o `9ANSIB`1uffer `2!!");
 	});
 	server.listen(8124, function() { //'listening' listener
 		console.log('server bound');
@@ -109,7 +109,7 @@ These are the backtick color codes based on how the [Legend of the Red Dragon](h
 Note the lack of dark grey.  This is an issue with the default colors on the mac
 terminal. (taken from iTerm - terminal.app is even worse)
 
-![Mac Color Options](https://raw.github.com/jtsage/nodejs-ansibuffer/master/color-test-mac.png)
+![Mac Color Options](https://raw.github.com/jtsage/nodejs-ansibuffer/master/screens/color-test-mac.png)
 
 ## <a name="status"></a>Current status
 This module is in a development stage. It's probably broken horribly in places - not sure.

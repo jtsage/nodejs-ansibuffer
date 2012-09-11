@@ -1,4 +1,4 @@
-var ansi = require('./ansibuffer.js');
+var ansi = require('../ansibuffer.js');
 
 var outBuff = new ansi.ANSIBuffer();
 var c = ansi.ANSIChars;
