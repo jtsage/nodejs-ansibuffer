@@ -21,7 +21,7 @@ TOC
 <a name="usage"></a>Usage
 -----
 	var net = require('net');
-	var ansi = require('ansibuffer');
+	var ansi = require('nodejs-ansibuffer');
 
 	var server = net.createServer(function(c) { //'connection' listener
 		console.log('server connected');
@@ -51,7 +51,7 @@ TOC
 
 To create a new buffer, import the module, and create a new ANSIBuffer() object.
 
-	var ansi = require('ansibuffer');
+	var ansi = require('nodejs-ansibuffer');
 	var buffer = new ansi.ANSIBuffer();
 
 #### ANSIBuffer.dump()
