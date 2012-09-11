@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-ansibuffer",
+  "version": "0.0.1",
+  "description": "Escape code aware (ANSI), chunked, input/output buffer",
+  "main": "ansibuffer.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jtsage/nodejs-ansibuffer"
+  },
+  "keywords": [
+    "ANSI",
+    "telnet",
+    "net"
+  ],
+  "author": "J.T.Sage",
+  "license": "BSD"
+}
