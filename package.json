@@ -4,7 +4,8 @@
   "description": "Escape code aware (ANSI), chunked, input/output buffer",
   "main": "ansibuffer.js",
   "scripts": {
-    "test": "node ./tests/test.js"
+    "test": "node ./tests/test.js",
+    "color": "node ./tests/color-test.js"
   },
   "repository": {
     "type": "git",
