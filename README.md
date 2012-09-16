@@ -69,6 +69,12 @@ Empty the buffer, drop all the contents.
 Queue text for display.  This can be plain text, a string containing full escape
 codes, or a string containing "Legend of the Red Dragon" backtick codes. (see below)
 
+#### ANSIBuffer.center(<text>)
+Queue text for display (same as above) - But center it *on an 80 column screen*.
+NOTE: this does not check TERM width.  Ever. YMMV. (a/n: This package is built
+to emulate the days of the modem, and those terminals were 80 columns wide - 
+well, unless they were only 40.  or maybe 132.  But you have to draw the line 
+somewhere, and most ANSI art from those days was based on 79/80.)
 
 ## <a name="chars"></a>ANSIChars
 This is an object that contains some well-used high-ASCII characters, reimagined

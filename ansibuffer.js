@@ -73,6 +73,17 @@ var ANSIBuffer = (function(){
     }
   }
  
+  ANSIBuffer.prototype.center = function(text) {
+    if ( typeof text === 'undefined' || text === '' ) { return ( this ); }
+    var cleantext = text.replace(/`([0-9!@#$%])/g, '').replace(/\x1b\[[0-9;]+m/g, '');
+    var column = (39 - (cleantext.length / 2));
+    var paddy = '';
+    for ( var i = 0; i < (39 - (cleantext.length / 2)); i++ ) {
+      paddy = paddy + ' ';
+    }
+    this.queue(paddy + text);
+  }
+
   // Intellegent queue - also fix color codes.
   ANSIBuffer.prototype.queue = function(text) {
     if ( typeof text === 'undefined' || text === '' ) { return( this ); }

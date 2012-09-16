@@ -10,7 +10,7 @@ var timer = setInterval(function () {
 	}
 }, 5);
 
-outBuff.queue("`%Color Options:\r\n");
+outBuff.center("`%Color Options:\r\n");
 outBuff.queue("`1"+c.A176+c.A177+c.A178+c.A177+c.A176+ " : Dark Red              ");
 outBuff.queue("`9"+c.A176+c.A177+c.A178+c.A177+c.A176+ " : Bright Red\r\n");
 outBuff.queue("`2"+c.A176+c.A177+c.A178+c.A177+c.A176+ " : Dark Greeen           ");
