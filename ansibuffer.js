@@ -14,6 +14,17 @@ var ANSIChars = {
   A254: "\u25aa"
 };
 
+var ANSICenter = function(text) {
+  if ( typeof text === 'undefined' || text === '' ) { return ( '' ); }
+  var cleantext = text.replace(/`([0-9!@#$%])/g, '').replace(/\x1b\[[0-9;]+m/g, '');
+  var column = (39 - (cleantext.length / 2));
+  var paddy = '';
+  for ( var i = 0; i < (39 - (cleantext.length / 2)); i++ ) {
+    paddy = paddy + ' ';
+  }
+  return (paddy + text);
+}
+
 // Make an ANIS Output buffer - that respects escape sequences.
 var ANSIBuffer = (function(){
   function ANSIBuffer() {
@@ -74,14 +85,7 @@ var ANSIBuffer = (function(){
   }
  
   ANSIBuffer.prototype.center = function(text) {
-    if ( typeof text === 'undefined' || text === '' ) { return ( this ); }
-    var cleantext = text.replace(/`([0-9!@#$%])/g, '').replace(/\x1b\[[0-9;]+m/g, '');
-    var column = (39 - (cleantext.length / 2));
-    var paddy = '';
-    for ( var i = 0; i < (39 - (cleantext.length / 2)); i++ ) {
-      paddy = paddy + ' ';
-    }
-    this.queue(paddy + text);
+    this.queue(ANSICenter(text));
   }
 
   // Intellegent queue - also fix color codes.
@@ -126,3 +130,4 @@ var ANSIBuffer = (function(){
 
 exports.ANSIBuffer = ANSIBuffer;
 exports.ANSIChars = ANSIChars;
+exports.ANSICenter = ANSICenter;

@@ -12,6 +12,7 @@ TOC
 * [Usage](#usage)
 * [ASNIBuffer API](#api)
 * [ANSIChars](#chars)
+* [ANSICenter](#center)
 * [Backtick Color](#backtick)
 * [Status](#status)
 * [Contributors](#contrib)
@@ -90,6 +91,9 @@ in unicode.
  * A223 - &#x2580; - Top Half Box
  * A254 - &#x25aa; - Center Square
  * ESC - Escape Sequence Start "{ESC}["
+ 
+## <a name="chars"></a>ANSIChars
+This is a function that allows you to center an ANSI string prior to queueing it. 
 
 <a name="backtick"></a>Backtick Color
 -----------------
