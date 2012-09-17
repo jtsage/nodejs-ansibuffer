@@ -1,8 +1,8 @@
-
+"use strict";
 
 // Some standard "old" ANSI/High-ASCII Characters, in UNICODE.
 var ANSIChars = {
-  ESC: "\033[",
+  ESC: "\x1b[",
   A176: "\u2591",
   A177: "\u2592",
   A178: "\u2593",
@@ -13,17 +13,41 @@ var ANSIChars = {
   A223: "\u2580",
   A254: "\u25aa"
 };
+exports.ANSIChars = ANSIChars;
 
-var ANSICenter = function(text) {
+var ANSIRightAlign = function(text, endcol, absolute) {
+  if ( typeof absolute !== 'boolean' ) { absolute = true; }
+  
+  var cleantext = text.replace(/`([0-9!@#$%])/g, '').replace(/\x1b\[[0-9;]+m/g, '').replace(/\r|\n/g, '');
+  
+  if ( absolute === true ) {
+    return ( 
+      "\x1b[" +  endcol + "G" + 
+      "\x1b[" + cleantext.toString().length + "D" + 
+      text
+    );
+  } else {
+    return (
+      "\x1b[" + endcol + "C" +
+      "\x1b[" + cleantext.toString().length + "D" + 
+      text
+    );
+  }
+}
+exports.ANSIRightAlign = ANSIRightAlign;
+
+var ANSICenter = function(text,width) {
   if ( typeof text === 'undefined' || text === '' ) { return ( '' ); }
-  var cleantext = text.replace(/`([0-9!@#$%])/g, '').replace(/\x1b\[[0-9;]+m/g, '');
-  var column = (39 - (cleantext.length / 2));
+  if ( typeof width === 'undefined' ) { width = 80; }
+  var centercol = (width / 2) - 1;
+  var cleantext = text.replace(/`([0-9!@#$%])/g, '').replace(/\x1b\[[0-9;]+m/g, '').replace(/\r|\n/g, '');
   var paddy = '';
-  for ( var i = 0; i < (39 - (cleantext.length / 2)); i++ ) {
+  for ( var i = 0; i < (centercol - (cleantext.length / 2)); i++ ) {
     paddy = paddy + ' ';
   }
   return (paddy + text);
 }
+exports.ANSICenter = ANSICenter;
 
 // Make an ANIS Output buffer - that respects escape sequences.
 var ANSIBuffer = (function(){
@@ -63,7 +87,7 @@ var ANSIBuffer = (function(){
       var outString = '';
       while ( i < 5 ) {
         var outChar = self.shift(); i++;
-        if ( outChar === "\033" ) {
+        if ( outChar === "\x1b" ) {
           var string = "\x1b"; escseq = true;
           while (escseq === true ) {
             outChar = self.shift(); i++;
@@ -84,8 +108,8 @@ var ANSIBuffer = (function(){
     }
   }
  
-  ANSIBuffer.prototype.center = function(text) {
-    this.queue(ANSICenter(text));
+  ANSIBuffer.prototype.center = function(text,width) {
+    this.queue(ANSICenter(text,width));
   }
 
   // Intellegent queue - also fix color codes.
@@ -93,21 +117,21 @@ var ANSIBuffer = (function(){
     if ( typeof text === 'undefined' || text === '' ) { return( this ); }
     text = text.replace(/`([0-9!@#$%])/g, function(match, oper) {
       switch (oper) {
-        case '1': return "\033[0m\033[31m";
-        case '2': return "\033[0m\033[32m";
-        case '3': return "\033[0m\033[33m";
-        case '4': return "\033[0m\033[34m";
-        case '5': return "\033[0m\033[35m";
-        case '6': return "\033[0m\033[36m";
-        case '7': return "\033[0m\033[37m";
-        case '8': return "\033[0m\033[1;30m";
-        case '9': return "\033[0m\033[1;31m";
-        case '0': return "\033[0m\033[1;32m";
-        case '!': return "\033[0m\033[1;33m";
-        case '@': return "\033[0m\033[1;34m";
-        case '#': return "\033[0m\033[1;35m";
-        case '$': return "\033[0m\033[1;36m";
-        case '%': return "\033[0m\033[1;37m";
+        case '1': return "\x1b[0m\x1b[31m";
+        case '2': return "\x1b[0m\x1b[32m";
+        case '3': return "\x1b[0m\x1b[33m";
+        case '4': return "\x1b[0m\x1b[34m";
+        case '5': return "\x1b[0m\x1b[35m";
+        case '6': return "\x1b[0m\x1b[36m";
+        case '7': return "\x1b[0m\x1b[37m";
+        case '8': return "\x1b[0m\x1b[1;30m";
+        case '9': return "\x1b[0m\x1b[1;31m";
+        case '0': return "\x1b[0m\x1b[1;32m";
+        case '!': return "\x1b[0m\x1b[1;33m";
+        case '@': return "\x1b[0m\x1b[1;34m";
+        case '#': return "\x1b[0m\x1b[1;35m";
+        case '$': return "\x1b[0m\x1b[1;36m";
+        case '%': return "\x1b[0m\x1b[1;37m";
         case '.': return "";
         default: return '`' + oper;
       }
@@ -129,5 +153,3 @@ var ANSIBuffer = (function(){
 }).call( {} );
 
 exports.ANSIBuffer = ANSIBuffer;
-exports.ANSIChars = ANSIChars;
-exports.ANSICenter = ANSICenter;

@@ -13,6 +13,7 @@ TOC
 * [ASNIBuffer API](#api)
 * [ANSIChars](#chars)
 * [ANSICenter](#center)
+* [ANSIRightAlign](#right)
 * [Backtick Color](#backtick)
 * [Status](#status)
 * [Contributors](#contrib)
@@ -66,16 +67,13 @@ a manufactured delay in these - well, sometimes anyway.
 #### ANSIBuffer.clear()
 Empty the buffer, drop all the contents.
 
-#### ANSIBuffer.queue(<text>)
+#### ANSIBuffer.queue( text )
 Queue text for display.  This can be plain text, a string containing full escape
-codes, or a string containing "Legend of the Red Dragon" backtick codes. (see below)
+codes, or a string containing "Legend of the Red Dragon" [backtick](#backtick) codes.
 
-#### ANSIBuffer.center(<text>)
+#### ANSIBuffer.center( text, [width] )
 Queue text for display (same as above) - But center it *on an 80 column screen*.
-NOTE: this does not check TERM width.  Ever. YMMV. (a/n: This package is built
-to emulate the days of the modem, and those terminals were 80 columns wide - 
-well, unless they were only 40.  or maybe 132.  But you have to draw the line 
-somewhere, and most ANSI art from those days was based on 79/80.)
+If not specified, defaults to a TERM width of 80.
 
 ## <a name="chars"></a>ANSIChars
 This is an object that contains some well-used high-ASCII characters, reimagined
@@ -92,8 +90,17 @@ in unicode.
  * A254 - &#x25aa; - Center Square
  * ESC - Escape Sequence Start "{ESC}["
  
-## <a name="chars"></a>ANSIChars
+## <a name="center"></a>ANSICenter(text, [width]);
 This is a function that allows you to center an ANSI string prior to queueing it. 
+
+## <a name="right"></a>ANSIRightAlign(text, column, [absolute]);
+This is a function that allows you to right-align an ANSI string prior to 
+queueing it. Column can be either "absolute" (default), or based on the rest of
+the line.
+
+a/n: Absolute method moves to the named column, then backs up the length of the
+string.  Relative method "spaces" over that many columns, then backs up the
+length of the string.
 
 <a name="backtick"></a>Backtick Color
 -----------------
