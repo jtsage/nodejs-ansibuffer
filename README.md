@@ -121,6 +121,7 @@ These are the backtick color codes based on how the [Legend of the Red Dragon](h
  * <span style="background-color: black; color: rgb(255,85,255)">`# : Bright Magenta</span>
  * <span style="background-color: black; color: rgb(85,255,255)">`$ : Bright Cyan</span>
  * <span style="background-color: black; color: rgb(255,255,255)">`% : Bright White</span>
+ * <span style="background-color: black; color: rgb(170,170,170)">`. : Reset to TERM Default</span>
 
 ### Mac Defaults:
 Note the lack of dark grey.  This is an issue with the default colors on the mac

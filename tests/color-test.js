@@ -12,9 +12,9 @@ var timer = setInterval(function () {
 }, 5);
 
 outBuff.center("`%Right-Align Options:\r\n",65);
-outBuff.queue('`4123456789-123456789-123456789-123456789-123456789-'+ "\r\n");
+outBuff.queue('`4123456789-`.123456789-`4123456789-`.123456789-`4123456789-'+ "\r\n");
 outBuff.queue('`7Pad:`%' + padright('padto40abs',40) + "\r\n");
-outBuff.queue('`4XXXX123456789-123456789-123456789-123456789-123456789-'+ "\r\n");
+outBuff.queue('`.XXXX`4123456789-`.123456789-`4123456789-`.123456789-`4123456789-'+ "\r\n");
 outBuff.queue('`7Pad:`%' + padright('padto40rel',40,false) + "\r\n\r\n");
 
 outBuff.center("`%Color Options:\r\n",65);

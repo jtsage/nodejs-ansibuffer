@@ -115,7 +115,7 @@ var ANSIBuffer = (function(){
   // Intellegent queue - also fix color codes.
   ANSIBuffer.prototype.queue = function(text) {
     if ( typeof text === 'undefined' || text === '' ) { return( this ); }
-    text = text.replace(/`([0-9!@#$%])/g, function(match, oper) {
+    text = text.replace(/`([0-9!@#$%.])/g, function(match, oper) {
       switch (oper) {
         case '1': return "\x1b[0m\x1b[31m";
         case '2': return "\x1b[0m\x1b[32m";
@@ -132,7 +132,7 @@ var ANSIBuffer = (function(){
         case '#': return "\x1b[0m\x1b[1;35m";
         case '$': return "\x1b[0m\x1b[1;36m";
         case '%': return "\x1b[0m\x1b[1;37m";
-        case '.': return "";
+        case '.': return "\x1b[0m";
         default: return '`' + oper;
       }
     });
