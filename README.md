@@ -10,7 +10,7 @@ delay that we were all used to in the old BBS days.
 TOC
 ---
 * [Usage](#usage)
-* [ASNIBuffer API](#api)
+* [ANSIBuffer API](#api)
 * [ANSIChars](#chars)
 * [ANSICenter](#center)
 * [ANSIRightAlign](#right)
